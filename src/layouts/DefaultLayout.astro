@@ -1,0 +1,36 @@
+---
+import '@styles/common.scss'
+import Title from '@components/Title.astro'
+const {
+  id,
+  title
+} = Astro.props
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Title title={title} />
+  </head>
+  <body>
+    <header>
+      <h1 id={id}>{title ?? "To The Normal"}</h1>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer></footer>
+  </body>
+</html>
+
+<style lang="scss">
+  header {
+    h1 {
+      font-size: 2rem;
+      font-weight: normal;
+      font-style: normal;
+    }
+  }
+</style>

@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'BIZ UDPMincho';
+  src: url('/fonts/BIZUDPMincho-Regular.ttf');
+}
+@font-face {
+  font-family: 'BIZ UDPGothic';
+  src: url('/fonts/BIZUDPGothic-Regular.ttf');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/fonts/SourceCodePro-Regular.ttf');
+}
+
+$background-color: hsl(122, 39%, 49%);
+$color: hsl(0, 0%, 100%);
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-family: 'BIZ UDPMincho', serif;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  font-style: normal;
+  margin: 1em 0;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: normal;
+  margin: 1em 0;
+}
+
+p {
+  margin: 1rem 0;
+}

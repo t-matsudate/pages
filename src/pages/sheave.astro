@@ -1,0 +1,47 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+---
+
+<DefaultLayout id="sheave" title="Sheave">
+  <section>
+    <h2>どういうツール？</h2>
+    <p>RTMP という通信プロトコルの上で映像や音声を送受信するためのサーバとクライアントの実装です。</p>
+  </section>
+  <section>
+    <h2>開発の動機</h2>
+    <ul>
+      <li>既存サーバ製品との代替</li>
+      <li>プログラマとしての鍛練の継続</li>
+    </ul>
+    <h3>既存サーバ製品との代替</h3>
+    <p></p>
+    <h3>プログラマとしての鍛練の継続</h3>
+    <p></p>
+  </section>
+  <section>
+    <h2>機能</h2>
+    <ul>
+      <li>RTMP&nbsp;ハンドシェイク</li>
+    </ul>
+  </section>
+  <section>
+    <h2>リポジトリとドキュメント</h2>
+    <dl>
+      <dt>リポジトリ</dt>
+      <dd><a href="https://github.com/t-matsudate/sheave">https://github.com/t-matsudate/sheave</a></dd>
+      <dt>ドキュメント</dt>
+      <dd><a href="https://t-matsudate.github.io/sheave/sheave_core">コアライブラリ</a></dd>
+    </dl>
+  </section>
+</DefaultLayout>
+
+<style lang="scss">
+  section {
+    padding: 1rem;
+  }
+
+  section:nth-child(even) {
+    background-color: $background-color;
+    color: $color;
+  }
+</style>
