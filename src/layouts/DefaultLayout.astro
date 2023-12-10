@@ -18,19 +18,39 @@ const {
     <header>
       <h1 id={id}>{title ?? "To The Normal"}</h1>
     </header>
-    <main>
-      <slot />
-    </main>
+    <slot />
     <footer></footer>
   </body>
 </html>
 
 <style lang="scss">
+  @function header-image-url($size, $mode) {
+    @return "/img/header-#{$size}-#{$mode}.png";
+  }
+
   header {
+    --header-height: calc(var(--device-height) / 2);
+
+    min-height: var(--header-height);
+
+    @media (orientation: landscape) {
+      background-image: url(header-image-url(var(--device-width), var(--mode)));
+    }
+
+    @media (orientation: portrait) {
+      background-image: url(header-image-url(var(--device-height), var(--mode)));
+    }
+
     h1 {
+      text-align: center;
+      padding: calc(var(--header-height) / 2 - 1rem);
       font-size: 2rem;
       font-weight: normal;
       font-style: normal;
     }
+  }
+
+  footer {
+    @include theme-color;
   }
 </style>

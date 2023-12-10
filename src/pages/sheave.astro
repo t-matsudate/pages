@@ -3,45 +3,121 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 ---
 
 <DefaultLayout id="sheave" title="Sheave">
-  <section>
-    <h2>どういうツール？</h2>
-    <p>RTMP という通信プロトコルの上で映像や音声を送受信するためのサーバとクライアントの実装です。</p>
-  </section>
-  <section>
-    <h2>開発の動機</h2>
-    <ul>
-      <li>既存サーバ製品との代替</li>
-      <li>プログラマとしての鍛練の継続</li>
-    </ul>
-    <h3>既存サーバ製品との代替</h3>
-    <p></p>
-    <h3>プログラマとしての鍛練の継続</h3>
-    <p></p>
-  </section>
-  <section>
-    <h2>機能</h2>
-    <ul>
-      <li>RTMP&nbsp;ハンドシェイク</li>
-    </ul>
-  </section>
-  <section>
-    <h2>リポジトリとドキュメント</h2>
-    <dl>
-      <dt>リポジトリ</dt>
-      <dd><a href="https://github.com/t-matsudate/sheave">https://github.com/t-matsudate/sheave</a></dd>
-      <dt>ドキュメント</dt>
-      <dd><a href="https://t-matsudate.github.io/sheave/sheave_core">コアライブラリ</a></dd>
-    </dl>
-  </section>
+  <main>
+    <section>
+      <div>
+        <h2>Sheave とは</h2>
+      </div>
+      <div>
+        <p>RTMP という通信プロトコルの上で映像や音声を送受信するためのメディアサーバとクライアントの実装です。</p>
+      </div>
+    </section>
+    <section>
+      <div>
+        <h2>開発の動機</h2>
+      </div>
+      <div>
+        <h3>第三の選択肢</h3>
+        <p>
+          既存のメディアサーバ製品はとても高品質ですが、同時に高価です。
+          個人が実験的に触るツールとしては中々手が出せません。
+          そこで、以下の要件を満たすメディアサーバの開発を開始しました。
+        </p>
+        <ul>
+          <li>全製品に共通している機能は無料で使えること。</li>
+          <li>オープンソースであり、追加で必要な機能は各自で実装できること。</li>
+          <li>VPS のような規模の限られたサービスからでも使えること(マネージド含む)。</li>
+        </ul>
+        <h3>「素振り」の継続</h3>
+        <p>
+          私は8年前に職を失いました。
+          そこから数年は就職活動としてあちこち周っていましたが、マッチする求人が見つからなくなり、途方に暮れていました。
+          だからといってそのまま呆然とすごすわけにもいかなかったので、いわゆる「素振り」の一環として、普及して身近なものとなった動画配信サービスないしはそのサーバプログラムの学習を開始しました。
+        </p>
+      </div>
+    </section>
+    <section>
+      <div>
+        <h2>機能</h2>
+      </div>
+      <div>
+        <ul>
+          <li>RTMP&nbsp;ハンドシェイク</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div>
+        <h2>リポジトリとドキュメント</h2>
+      </div>
+      <div>
+        <h3>リポジトリ</h3>
+        <ul>
+          <li class="github"><a href="https://github.com/t-matsudate/sheave">GitHub</a></li>
+        </ul>
+        <h3>ドキュメント</h3>
+        <ul>
+          <li class="github"><a href="https://t-matsudate.github.io/sheave/sheave_core">コアライブラリ</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 </DefaultLayout>
 
 <style lang="scss">
-  section {
-    padding: 1rem;
-  }
+  main {
+    section {
+      @media (orientation: landscape) {
+        display: flex;
+      }
 
-  section:nth-child(even) {
-    background-color: $background-color;
-    color: $color;
+      &:nth-child(even) {
+        @include theme-color;
+      }
+
+      min-height: var(--device-height);
+
+      & > div {
+        @media (orientation: landscape) {
+          width: 50%;
+        }
+
+        @media (orientation: portrait) {
+          min-height: calc(var(--device-height) / 2);
+        }
+
+        &:last-child {
+          padding: 0 1rem;
+        }
+      }
+
+      h2 {
+        padding-top: calc(var(--device-height) / 2 - 1rem);
+        font-size: 2rem;
+        font-weight: normal;
+        font-style: normal;
+        text-align: center;
+      }
+
+      h3 {
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+        font-weight: normal;
+        font-style: normal;
+        text-align: center;
+      }
+
+      p {
+        margin: 1rem 0;
+      }
+
+      ul {
+        margin: 1rem 0;
+
+        li {
+          margin: 1rem 0;
+        }
+      }
+    }
   }
 </style>

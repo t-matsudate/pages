@@ -1,3 +1,21 @@
+$theme-background-color: hsl(124, 55%, 23%);
+$theme-color: hsl(0, 100%, 100%);
+$theme-link-color: hsl(53, 100%, 61%);
+$theme-link-color-visited: hsl(28, 91%, 52%);
+
+@mixin theme-color {
+  background-color: $theme-background-color;
+  color: $theme-color;
+
+  a {
+    color: $theme-link-color;
+
+    &:visited {
+      color: $theme-link-color-visited;
+    }
+  }
+}
+
 @font-face {
   font-family: 'BIZ UDPMincho';
   src: url('/fonts/BIZUDPMincho-Regular.ttf');
@@ -11,36 +29,136 @@
   src: url('/fonts/SourceCodePro-Regular.ttf');
 }
 
-$background-color: hsl(122, 39%, 49%);
-$color: hsl(0, 0%, 100%);
+:root {
+  --device-height: 1080px;
+  --device-width: 1920px;
+  --mode: light;
+}
+
+@media (orientation: landscape) {
+  @media (min-width: 426px) {
+    :root {
+      --device-height: 240px;
+      --device-width: 426px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --device-height: 360px;
+      --device-width: 640px;
+    }
+  }
+
+  @media (min-width: 853px) {
+    :root {
+      --device-height: 440px;
+      --device-width: 853px;
+    }
+  }
+
+  @media (min-width: 960px) {
+    :root {
+      --device-height: 540px;
+      --device-width: 960px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    :root {
+      --device-height: 720px;
+      --device-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    :root {
+      --device-height: 1080px;
+      --device-width: 1920px;
+    }
+  }
+
+  @media (min-width: 2560px) {
+    :root {
+      --device-height: 1440px;
+      --device-width: 2560px;
+    }
+  }
+
+  @media (min-width: 3840px) {
+    :root {
+      --device-height: 2160px;
+      --device-width: 3840px;
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  @media (min-height: 426px) {
+    :root {
+      --device-height: 426px;
+      --device-width: 240px;
+    }
+  }
+
+  @media (min-height: 640px) {
+    :root {
+      --device-height: 640px;
+      --device-width: 360px;
+    }
+  }
+
+  @media (min-height: 853px) {
+    :root {
+      --device-height: 853px;
+      --device-width: 440px;
+    }
+  }
+
+  @media (min-height: 960px) {
+    :root {
+      --device-height: 960px;
+      --device-width: 540px;
+    }
+  }
+
+  @media (min-height: 1280px) {
+    :root {
+      --device-height: 1280px;
+      --device-width: 720px;
+    }
+  }
+
+  @media (min-height: 1920px) {
+    :root {
+      --device-height: 1920px;
+      --device-width: 1080px;
+    }
+  }
+
+  @media (min-height: 2560px) {
+    :root {
+      --device-height: 2560px;
+      --device-width: 1440px;
+    }
+  }
+
+  @media (min-height: 3840px) {
+    :root {
+      --device-height: 3840px;
+      --device-width: 2160px;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mode: dark;
+  }
+}
 
 * {
   margin: 0;
   padding: 0;
-  line-height: 1;
   font-family: 'BIZ UDPMincho', serif;
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: normal;
-  font-style: normal;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: normal;
-  font-style: normal;
-  margin: 1em 0;
-}
-
-h3 {
-  font-size: 1rem;
-  font-weight: bold;
-  font-style: normal;
-  margin: 1em 0;
-}
-
-p {
-  margin: 1rem 0;
 }
