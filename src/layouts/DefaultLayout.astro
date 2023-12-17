@@ -1,5 +1,4 @@
 ---
-import '@styles/common.scss'
 import Title from '@components/Title.astro'
 const {
   id,
@@ -42,8 +41,8 @@ const {
     }
 
     h1 {
+      padding-top: calc(var(--header-height) / 2 - 1rem);
       text-align: center;
-      padding: calc(var(--header-height) / 2 - 1rem);
       font-size: 2rem;
       font-weight: normal;
       font-style: normal;
