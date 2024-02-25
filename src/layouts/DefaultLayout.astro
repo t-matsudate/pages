@@ -1,0 +1,97 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+}
+
+const {
+  id,
+  title
+} = Astro.props;
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{ title ? title + " - To The Normal" : "To The Normal" }</title>
+  </head>
+  <body>
+    <slot name="menu" />
+    <header id={ id }>
+      <h1>{ title ?? "To The Normal" }</h1>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <section>
+        <h4>プロフィール</h4>
+        <ul>
+          <li><a href="/#accounts">SNS&nbsp;アカウント</a></li>
+          <li><a href="/#profile">私自身について</a></li>
+          <li><a href="/#repositories">開発中のリポジトリ</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Sheave</h4>
+        <ul>
+          <li><a href="/sheave/#about">Sheave&nbsp;とは</a></li>
+          <li><a href="/sheave/#core">Core</a></li>
+          <li><a href="/sheave/#server">Server</a></li>
+          <li><a href="/sheave/#client">Client</a></li>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>
+
+<style lang="scss">
+  body > :not(:first-child) {
+    margin-left: 4rem;
+  }
+
+  #toggle-menu {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    background-color: $theme-background-color;
+    color: $theme-color;
+    border-radius: 8px;
+
+    span::before {
+      @extend %fa-icon;
+      @extend .fa-solid;
+
+      content: fa-content($fa-var-bars);
+    }
+  }
+
+  header {
+    @include theme;
+
+    min-height: var(--device-height);
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }
+
+  footer {
+    @include theme;
+
+    @media (orientation: landscape) {
+      grid-template-columns: repeat(2, auto);
+      justify-content: space-evenly;
+    }
+
+    @media (orientation: portrait) {
+      justify-content: center;
+    }
+
+    display: grid;
+    gap: 0 1rem;
+    padding: 2rem;
+    min-height: var(--device-height);
+  }
+</style>

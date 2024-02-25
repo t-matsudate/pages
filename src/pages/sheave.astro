@@ -1,0 +1,99 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import Menu from '@components/Menu.astro';
+---
+
+<DefaultLayout id="sheave" title="Sheave">
+  <Menu slot="menu">
+    <menu>
+      <li><a href="#about">Sheave&nbsp;とは</a></li>
+      <li><a href="#core">コアライブラリ</a></li>
+      <li><a href="#server">サーバ</a></li>
+      <li><a href="#client">クライアント</a></li>
+    </menu>
+  </Menu>
+  <section id="about">
+    <h2>Sheave</h2>
+    <p>Rust で書かれたオープンソースのための RTMP ツール群</p>
+  </section>
+  <section id="core">
+    <h2>Core</h2>
+    <p>クライアント/サーバ双方で必要になる機能やデータを集約したライブラリ</p>
+    <ul class="custom-markers">
+      <li class="github"><a href="https://github.com/t-matsudate/sheave/tree/main/sheave-core">リポジトリ</a></li>
+      <li class="pages"><a href="https://t-matsudate.github.io/sheave/sheave_core">ドキュメント</a></li>
+    </ul>
+  </section>
+  <section id="server">
+    <h2>Server</h2>
+    <p>Sheave&nbsp;のサーバ実装</p>
+    <ul class="custom-markers">
+      <li class="github"><a href="https://github.com/t-matsudate/sheave/tree/main/sheave-server">リポジトリ</a></li>
+      <li class="pages"><a href="/sheave/sheave_server">ドキュメント</a></li>
+    </ul>
+  </section>
+  <section id="client">
+    <h2>Client</h2>
+    <p>Sheave&nbsp;のクライアント実装</p>
+    <ul class="custom-markers">
+      <li class="github"><a href="https://github.com/t-matsudate/sheave/tree/main/sheave-client">リポジトリ</a></li>
+      <li class="pages"><a href="/sheave/sheave_client">ドキュメント</a></li>
+    </ul>
+  </section>
+</DefaultLayout>
+
+<style lang="scss">
+  section {
+    min-height: var(--device-height);
+    padding: 2rem;
+
+    &:nth-child(even) {
+      @include theme;
+    }
+
+    & > :not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    ul.custom-markers {
+      & > * {
+        padding-left: 1rem;
+      }
+
+      .github::marker {
+        @extend %fa-icon;
+        @extend .fa-brands;
+
+        content: fa-content($fa-var-github);
+      }
+
+      .gitlab::marker {
+        @extend %fa-icon;
+        @extend .fa-brands;
+
+        content: fa-content($fa-var-gitlab);
+      }
+
+      .pages::marker {
+        @extend %fa-icon;
+        @extend .fa-solid;
+
+        content: fa-content($fa-var-file-lines);
+      }
+
+      .checked::marker {
+        @extend %fa-icon;
+        @extend .fa-solid;
+
+        content: fa-content($fa-var-square-check);
+      }
+
+      .unchecked::marker {
+        @extend %fa-icon;
+        @extend .fa-solid;
+
+        content: fa-content($fa-var-square);
+      }
+    }
+  }
+</style>

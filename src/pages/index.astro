@@ -1,16 +1,161 @@
 ---
-
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import Menu from '@components/Menu.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<DefaultLayout id="index">
+  <Menu slot="menu">
+    <menu>
+      <li><a href="#accounts">SNS&nbsp;アカウント</a></li>
+      <li><a href="#profile">プロフィール</a></li>
+      <li><a href="#repositories">開発中のリポジトリ</a></li>
+    </menu>
+  </Menu>
+  <section id="accounts">
+    <div>
+      <img src="/img/myface.png" alt="現在の各種SNSアイコン" />
+    </div>
+    <ul class="custom-markers">
+      <li class="github"><a href="https://github.com/t-matsudate" aria-label="GitHub">@t-matsudate</a></li>
+      <li class="gitlab"><a href="https://gitlab.com/t-matsudate" aria-label="Gitlab">@t-matsudate</a></li>
+      <li class="x-twitter"><a href="https://twitter.com/func_hs" aria-label="X(Twitter)">@func_hs</a></li>
+      <li class="youtube"><a href="https://youtube.com/@func_hs" aria-label="Youtube">@func_hs</a></li>
+    </ul>
+  </section>
+  <section id="profile">
+    <h2>松舘&nbsp;剛志<br><small>Tsuyoshi&nbsp;Matsudate</small></h2>
+    <h3>所属</h3>
+    <p><a href="https://tryze.biz/">就労支援トライズ</a></p>
+  </section>
+  <section id="repositories">
+    <h2>リポジトリ</h2>
+    <h3>Sheave</h3>
+    <p>オープンソースのための&nbsp;RTMP&nbsp;ツール群(Rust&nbsp;製)</p>
+    <ul class="custom-markers">
+      <li class="github"><a href="https://github.com/t-matsudate/sheave">リポジトリ</a></li>
+      <li class="pages"><a href="/sheave">ドキュメント</a></li>
+    </ul>
+    <h4>機能</h4>
+    <ul class="custom-markers">
+      <li class="checked">RTMP&nbsp;ハンドシェイク</li>
+      <li class="checked">通信に必要な設定情報の交換</li>
+      <li class="unchecked">映像・音声の蓄積と変換</li>
+    </ul>
+    <h4>目標</h4>
+    <p>RTMP&nbsp;ツールの個人用途に第三の選択肢を提供します。</p>
+    <ul>
+      <li>多くの&nbsp;RTMP&nbsp;ツールに共通している機能は無料で利用できるようにします。</li>
+      <li>オープンソースであり、ユーザ側での拡張を可能にします。</li>
+      <li>VPS&nbsp;上など、任意の小規模なユースケースにとって容易に使えるようにします。</li>
+    </ul>
+    <h4>ライセンス</h4>
+    <p>MIT ライセンス</p>
+  </section>
+</DefaultLayout>
+
+<style lang="scss">
+  section {
+    min-height: var(--device-height);
+
+    ul.custom-markers {
+      & > * {
+        padding-left: 1rem;
+      }
+
+      .github::marker {
+        @extend %fa-icon;
+        @extend .fa-brands;
+
+        content: fa-content($fa-var-github);
+      }
+
+      .gitlab::marker {
+        @extend %fa-icon;
+        @extend .fa-brands;
+
+        content: fa-content($fa-var-gitlab);
+      }
+
+      .x-twitter::marker {
+        @extend %fa-icon;
+        @extend .fa-brands;
+
+        content: fa-content($fa-var-x-twitter);
+      }
+
+      .youtube::marker {
+        @extend %fa-icon;
+        @extend .fa-brands;
+
+        content: fa-content($fa-var-youtube);
+      }
+
+      .pages::marker {
+        @extend %fa-icon;
+        @extend .fa-solid;
+
+        content: fa-content($fa-var-file-lines);
+      }
+
+      .checked::marker {
+        @extend %fa-icon;
+        @extend .fa-solid;
+
+        content: fa-content($fa-var-square-check);
+      }
+
+      .unchecked::marker {
+        @extend %fa-icon;
+        @extend .fa-solid;
+
+        content: fa-content($fa-var-square);
+      }
+    }
+
+    &#accounts {
+      @media (orientation: landscape) {
+        grid-template-columns: 50% 1fr;
+      }
+
+      @media (orientation: portrait) {
+        grid-template-rows: calc(var(--device-height) / 2) 1fr;
+      }
+
+      display: grid;
+      align-content: center;
+
+      div {
+        margin: auto;
+
+        img {
+          width: calc(400px / var(--device-pixel-ratio));
+          height: calc(400px / var(--device-pixel-ratio));
+        }
+      }
+
+      ul {
+        @media (orientation: portrait) {
+          grid-template-columns: 50% 1fr;
+        }
+      }
+    }
+
+    &:not(#accounts) {
+      padding: 2rem;
+
+      & > :not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+
+    &:nth-child(even) {
+      @include theme;
+    }
+
+    h2 {
+      small {
+        font-size: 1rem;
+      }
+    }
+  }
+</style>
