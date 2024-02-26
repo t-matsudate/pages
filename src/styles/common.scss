@@ -35,7 +35,6 @@ $theme-visited-color: hsl(28, 91%, 52%);
   margin: 0;
   padding: 0;
   font-family: "BIZ UDPMincho", serif;
-  appearance: auto;
 }
 
 :root {
@@ -236,6 +235,7 @@ ol {
 }
 
 menu {
+  list-style-type: decimal;
   margin: 0 1rem;
 
   li {
