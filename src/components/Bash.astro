@@ -15,9 +15,10 @@ const {
 <script>
   import 'highlight.js/styles/github.css'
   import highlight from 'highlight.js/lib/core'
-  import bash from `highlight.js/lib/languages/bash`
+  import bash from 'highlight.js/lib/languages/bash'
   highlight.registerLanguage('bash', bash)
 
+  const { id } = Astro.props
   const code = document.getElementById(id) ?? document.createElement('pre')
   highlight.highlightElement(code)
 </script>
