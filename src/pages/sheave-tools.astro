@@ -1,6 +1,15 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
-import Menu from '@components/Menu.astro';
+import Menu from '@components/Menu.astro'
+import Bash from '@components/Bash.astro'
+
+const runsServerOnRepository = `git clone https://github.com/t-matsudate/sheave
+cd ./sheave-server
+cargo run`
+const runsServerOnDocker = `docker run --rm -it -e PROTOCOL=rtmp -e HOST=127.0.0.1 -e PORT=1935 tmatsudate/sheave-server:latest`
+const runsClientOnRepository = `git clone https://github.com/t-matsudate/sheave
+cd ./sheave-client
+cargo run`
 ---
 
 <DefaultLayout id="sheave" title="Sheave">
@@ -29,7 +38,18 @@ import Menu from '@components/Menu.astro';
     <p>Sheave&nbsp;のサーバ実装</p>
     <ul class="custom-markers">
       <li class="github"><a href="https://github.com/t-matsudate/sheave/tree/main/sheave-server">リポジトリ</a></li>
-      <li class="pages"><a href="/sheave/sheave_server">ドキュメント</a></li>
+      <li class="pages"><a href="https://t-matsudate.github.io/sheave/sheave_server">ドキュメント</a></li>
+    </ul>
+    <h3>使い方</h3>
+    <ul>
+      <li>
+        <h4>リポジトリをクローンして使う場合</h4>
+        <Bash id="server-git" code={runsServerOnRepository} />
+      </li>
+      <li>
+        <h4>Docker&nbsp;イメージとして使う場合</h4>
+        <Bash id="server-docker" code={runsServerOnDocker} />
+      </li>
     </ul>
   </section>
   <section id="client">
@@ -37,7 +57,14 @@ import Menu from '@components/Menu.astro';
     <p>Sheave&nbsp;のクライアント実装</p>
     <ul class="custom-markers">
       <li class="github"><a href="https://github.com/t-matsudate/sheave/tree/main/sheave-client">リポジトリ</a></li>
-      <li class="pages"><a href="/sheave/sheave_client">ドキュメント</a></li>
+      <li class="pages"><a href="https://t-matsudate.github.io/sheave/sheave_client">ドキュメント</a></li>
+    </ul>
+    <h3>使い方</h3>
+    <ul>
+      <li>
+        <h4>リポジトリをクローンして使う場合</h4>
+        <Bash id="client-git" code={runsClientOnRepository} />
+      </li>
     </ul>
   </section>
 </DefaultLayout>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  id: string;
+  code: string;
+}
+
+const {
+  id,
+  code
+} = Astro.props
+---
+
+<pre id={id} style="max-width: 100%; overflow-x: scroll;"><code class="language-bash">{code}</code></pre>
+
+<script>
+  import 'highlight.js/styles/github.css'
+  import highlight from 'highlight.js/lib/core'
+  import bash from `highlight.js/lib/languages/bash`
+  highlight.registerLanguage('bash', bash)
+
+  const code = document.getElementById(id) ?? document.createElement('pre')
+  highlight.highlightElement(code)
+</script>
